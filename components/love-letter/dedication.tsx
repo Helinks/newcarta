@@ -8,7 +8,7 @@ interface DedicationProps {
   from?: string;
 }
 
-export function Dedication({ to = "otra", from = "Kevin" }: DedicationProps) {
+export function Dedication({ to = "Jenny", from = "Kevin" }: DedicationProps) {
   return (
     <motion.div
       className="text-center py-6"

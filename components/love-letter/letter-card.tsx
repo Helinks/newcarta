@@ -15,7 +15,7 @@ interface LetterCardProps {
 export function LetterCard({ isVisible }: LetterCardProps) {
   if (!isVisible) return null;
   const sender= "Kevin";
-  const receiver= "Ota";
+  const receiver= "Jenny";
 
 
   return (

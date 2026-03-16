@@ -16,21 +16,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Love Letter - Kevin & You',
-  description: 'A romantic digital love letter for Valentine\'s Day',
-  generator: 'v0.app',
+  title: 'Carta para ti',
+  description: 'Una carta hecha para ti',
+  generator: 'Helinks',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/minecraftIcon.jpg',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/minecraftIcon.jpg',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: '/minecraftIcon.jpg',
         type: 'image/svg+xml',
       },
     ],

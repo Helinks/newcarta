@@ -4,11 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const photos = [
-  { src: "/images/photo-1.jpg", alt: "Romantic sunset", rotation: -3 },
-  { src: "/images/photo-2.jpg", alt: "Holding hands", rotation: 2 },
-  { src: "/images/photo-3.jpg", alt: "Beautiful roses", rotation: -2 },
-  { src: "/images/photo-4.jpg", alt: "Romantic dinner", rotation: 3 },
-   { src: "/images/photo-4.jpg", alt: "Romantic dinner", rotation: 3 }
+  { src: "/images/foto1.jpg", alt: "Romantic sunset", rotation: -3 },
+  { src: "/images/foto2.jpg", alt: "Holding hands", rotation: 2 },
+  { src: "/images/foto3.jpg", alt: "Beautiful roses", rotation: -2 },
+  { src: "/images/foto4.jpg", alt: "Romantic dinner", rotation: 3 },
   
 ];
 
