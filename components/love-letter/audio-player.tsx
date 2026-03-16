@@ -8,10 +8,12 @@ interface AudioPlayerProps {
   audioSrc?: string;
 }
 
+
 export function AudioPlayer({ audioSrc }: AudioPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -49,6 +51,23 @@ export function AudioPlayer({ audioSrc }: AudioPlayerProps) {
     setIsPlaying(!isPlaying);
   };
 
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    const audio = audioRef.current;
+    const bar = progressBarRef.current;
+
+    if (!audio || !bar || !audio.duration) return;
+
+    const rect = bar.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const width = rect.width;
+
+    const percentage = clickX / width;
+    const newTime = percentage * audio.duration;
+
+    audio.currentTime = newTime;
+    setProgress(percentage * 100);
+  };
+
   if (!audioSrc) {
     return (
       <motion.div
@@ -62,8 +81,8 @@ export function AudioPlayer({ audioSrc }: AudioPlayerProps) {
             <Heart className="w-5 h-5 text-white" fill="currentColor" />
           </div>
           <div className="flex-1">
-            <p className="text-xs text-[#7a6b7d] font-sans">Voice message</p>
-            <p className="text-sm text-[#4a3f4f] font-sans">Add your audio file</p>
+            <p className="text-xs text-[#7a6b7d] font-sans">Mensaje de voz</p>
+            <p className="text-sm text-[#4a3f4f] font-sans">No se ha encontrado audio</p>
           </div>
         </div>
       </motion.div>
@@ -78,7 +97,7 @@ export function AudioPlayer({ audioSrc }: AudioPlayerProps) {
       transition={{ delay: 0.5 }}
     >
       <audio ref={audioRef} src={audioSrc} preload="metadata" />
-      
+
       <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-4 py-3 shadow-md">
         <button
           onClick={togglePlay}
@@ -97,7 +116,11 @@ export function AudioPlayer({ audioSrc }: AudioPlayerProps) {
             <Heart className="w-3 h-3 text-[#e85a71]" fill="currentColor" />
             <span className="text-xs text-[#7a6b7d] font-sans">Voice message</span>
           </div>
-          <div className="mt-1.5 h-1.5 bg-[#fce4ec] rounded-full overflow-hidden">
+          <div
+            ref={progressBarRef}
+            onClick={handleSeek}
+            className="mt-1.5 h-1.5 bg-[#fce4ec] rounded-full overflow-hidden cursor-pointer"
+          >
             <motion.div
               className="h-full bg-gradient-to-r from-[#f4a6b8] to-[#e85a71] rounded-full"
               style={{ width: `${progress}%` }}

@@ -8,7 +8,7 @@ interface YouTubeVideoProps {
   videoId?: string;
 }
 
-export function YouTubeVideo({ videoId = "a2oazh2o7QA" }: YouTubeVideoProps) {
+export function YouTubeVideo({ videoId }: YouTubeVideoProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (

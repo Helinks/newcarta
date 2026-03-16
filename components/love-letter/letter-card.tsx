@@ -71,9 +71,9 @@ export function LetterCard({ isVisible }: LetterCardProps) {
         <div className="px-6 pb-8 space-y-6">
           <PhotoCollage />
           <LoveMessage />
-          <YouTubeVideo />
-          <AudioPlayer />
-          <Dedication />
+          <YouTubeVideo videoId="a2oazh2o7QA"/>
+          <AudioPlayer audioSrc="/audio/audio.ogg"/>
+          <Dedication to={receiver} from={sender}/>
         </div>
       </div>
     </motion.div>
